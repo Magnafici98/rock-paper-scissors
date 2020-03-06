@@ -1,6 +1,6 @@
 // This code will perform when a selection is made
 function selectionMade(element, selectedPokemon){
-    clear();
+    clear(); // Clear selections
     selectedPokemon = selectedPokemon.toLowerCase();
 
     colorUserSelection(selectedPokemon);
@@ -10,7 +10,9 @@ function selectionMade(element, selectedPokemon){
 
     let winner = getWinner(selectedPokemon, computerChoice);
 
-    updateScore(winner);
+    currentScore = getCurrentScore(winner);
+
+    setScore(winner, currentScore);
 
     displayMessage(winner);
 }
@@ -91,19 +93,26 @@ function displayMessage(winner){
     }
 }
 
-// Updates the score count in the middle field
-function updateScore(winner){
-    let currentScore;
-    let newScore;
-
+// Updates the text on the webpage that displays the current score
+function setScore(winner, currentScore){
     if(winner == "Player"){
-        currentScore = parseInt(document.getElementById("user-score-label").textContent, 10);
-        alert(currentScore);
-        newScore = currentScore+= 1;
-        document.getElementById("user-score-label").textContent = "Score: " + newScore.toString();
-    }else if(winner == "Computer"){
-        currentScore = parseInt(document.getElementById("computer-score-label").textContent, 10);
-        newScore = currentScore+= 1;
-        document.getElementById("computer-score-label").textContent = "Score: " + newScore.toString();
+        document.getElementById("user-score-label").textContent = "Score: " + (currentScore + 1).toString();
+    }else{
+        document.getElementById("computer-score-label").textContent = "Score: " + (currentScore + 1).toString();
+    }
+}
+
+// Returns the current score for a player when called
+function getCurrentScore(winner, currentScore){
+    if(winner == "Player"){
+        text = document.getElementById("user-score-label").textContent.toString(); // Get value as text
+        text = text.replace(/\D/g, ""); // Remove all non-digits
+        currentScore = parseInt(text); // Store the score as an integer
+        return currentScore;
+    }else{
+        text = document.getElementById("computer-score-label").textContent.toString();
+        text = text.replace(/\D/g, "");
+        currentScore = parseInt(text);
+        return currentScore;
     }
 }
