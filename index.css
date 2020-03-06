@@ -15,3 +15,46 @@ p{
     max-height: 100%;
     max-width: 500px;
 }
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: black;
+    height: 8vh;
+    text-overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.name-copyright{
+    font-size: medium;
+    padding-right: 10vw;
+}
+.my-github{
+    padding: 20vw;
+}
+.nintendo-copyright{
+    font-size: small;
+    width: 250px;
+    padding-left: 10vw;
+}
+.charmander{
+    background-color: white;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+.bulbasaur{
+    background-color: white;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+.squirtle{
+    background-color: white;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
