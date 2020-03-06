@@ -7,15 +7,43 @@
 </head>
 
 <script>
-    playOptions = ["Rock", "Paper", "Scissors"]
+    playerSelection = prompt("Rock, Paper, or Scissors?");
 
     function computerPlay(){
+        let playOptions = ["Rock", "Paper", "Scissors"]
         let play = Math.floor(Math.random() * 3);
         return playOptions[play];
     }
 
-    computerPlay();
-</script>
+    function playRound(playerSelection, computerSelection){
+        let ps = playerSelection.toLowerCase();
+        let cs = computerSelection.toLowerCase();
+        
+        if(ps == cs){
+            return "It's a tie!";
+        }
+
+        if(ps == "rock"){
+            if(cs == "paper"){
+                return "You lose! Paper beats Rock!";
+            }else if(cs == "scissors"){
+                return "You win! Rock beats Scissors!";
+            }
+        }else if(ps == "paper"){
+            if(cs == "scissors"){
+                return "You lose! Scissors beats Paper!";
+            }else if(cs == "rock"){
+                return "You win! Paper beats Rock!";
+            }
+        }else if(ps == "scissors"){
+            if(cs == "rock"){
+                return "You lose! Rock beats Scissors!";
+            }else if(cs == "paper"){
+                return "You win! Scissors beats Paper!";
+            }
+        }
+    }
+    </script>
 <body>
     
 </body>
