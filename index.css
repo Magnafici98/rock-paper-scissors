@@ -1,0 +1,21 @@
+body{
+    background-image: url("background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.bg{
+    width: 50px;
+    padding: 40px;
+    margin: 100px auto;
+}
+p{
+    font-size: 25px;
+    color: black;
+}
+.pokemon-logo{
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    max-width: 500px;
+}
