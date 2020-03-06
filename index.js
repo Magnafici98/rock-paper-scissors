@@ -97,7 +97,7 @@ function displayMessage(winner){
 function setScore(winner, currentScore){
     if(winner == "Player"){
         document.getElementById("user-score-label").textContent = "Score: " + (currentScore + 1).toString();
-    }else{
+    }else if(winner == "Computer"){
         document.getElementById("computer-score-label").textContent = "Score: " + (currentScore + 1).toString();
     }
 }
