@@ -1,6 +1,6 @@
 /* Sets background image */
 body{
-    background-image: url("/assets/background.png");
+    background-image: url("https://i.ibb.co/71tzjrt/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
