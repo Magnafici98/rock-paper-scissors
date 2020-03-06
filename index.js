@@ -1,123 +1,109 @@
-let running = true;
-let gamesPlayed = 0;
-let result;
-let userScore = 0;
-let computerScore = 0;
-let draws = 0;
-let playAgain;
-let winner;
+// This code will perform when a selection is made
+function selectionMade(element, selectedPokemon){
+    clear();
+    selectedPokemon = selectedPokemon.toLowerCase();
 
-while(running){
-    // Asking the player to make a selection
-    playerSelection = prompt("Rock, Paper, or Scissors?");
+    colorUserSelection(selectedPokemon);
 
-    // Playing a game of Rock, Paper, Scissors and getting the result
-    result = playRound(playerSelection, computerPlay());
+    let computerChoice = getComputerChoice().toLowerCase();
+    colorComputerSelection(computerChoice);
 
-    // Adds to point total depending on who won the current game
-    if(result.startsWith("You win")){
-        userScore++;
-        winner = "Human";
-    }else if(result.startsWith("You lose")){
-        computerScore++;
-        winner = "Robot";
+    let winner = getWinner(selectedPokemon, computerChoice);
+
+    updateScore(winner);
+
+    displayMessage(winner);
+}
+
+// Clears any selections made in the prior round
+function clear(){
+    document.getElementById("left-char").style.backgroundColor = "white";
+    document.getElementById("left-bulb").style.backgroundColor = "white";
+    document.getElementById("left-squi").style.backgroundColor = "white";
+
+    document.getElementById("right-char").style.backgroundColor = "white";
+    document.getElementById("right-bulb").style.backgroundColor = "white";
+    document.getElementById("right-squi").style.backgroundColor = "white";
+}
+
+// Generates a choice for the computer, returns choice
+function getComputerChoice(){
+    let choices = ["Charmander", "Bulbasaur", "Squirtle"];
+
+    let choiceNum = Math.floor(Math.random() * 3);
+
+    return choices[choiceNum];
+}
+
+// Finds and returns the winner of the round
+function getWinner(selectedPokemon, computerChoice){
+    if(selectedPokemon == "charmander"){
+        if(computerChoice == "bulbasaur"){
+            return "Player";
+        }else if(computerChoice == "squirtle"){
+            return "Computer";
+        }
+    }else if(selectedPokemon == "bulbasaur"){
+        if(computerChoice == "squirtle"){
+            return "Player";
+        }else if(computerChoice == "charmander"){
+            return "Computer";
+        }
+    }else if(selectedPokemon == "squirtle"){
+        if(computerChoice == "charmander"){
+            return "Player";
+        }else if(computerChoice == "bulbasaur"){
+            return "Computer";
+        }
+    }
+
+    return "Draw";
+}
+
+// Colors the background of the user's selected Pokemon
+function colorUserSelection(selectedPokemon){
+    if(selectedPokemon == "charmander"){
+        document.getElementById("left-char").style.backgroundColor = "red";
+    }else if(selectedPokemon == "bulbasaur"){
+        document.getElementById("left-bulb").style.backgroundColor = "red";
     }else{
-        winner = "Draw";
-        draws++;
-    }
-
-    // Increment the games played by 1.
-    gamesPlayed++;
-
-    // Displays winner of the round, games played, and scores
-    alert("Games Played: " + gamesPlayed + "\nResult: " + winner +
-            "\nHuman Score: " + userScore + "\tRobot Score: " + computerScore);
-
-    // If 5 games have been played, signal the end of the game to function handleEnd()
-    if(gamesPlayed == 5){
-        handleEnd(userScore, computerScore);
+        document.getElementById("left-squi").style.backgroundColor = "red";
     }
 }
 
-/* This function will look at the array of possible options
-    and return a random choice using Math.random */
-function computerPlay(){
-    let playOptions = ["Rock", "Paper", "Scissors"]
-    let play = Math.floor(Math.random() * 3);
-    return playOptions[play];
-}
-
-/* This function will play a round of Rock, Paper, Scissors using the user's choice as
-well as the computer's random choice */
-function playRound(playerSelection, computerSelection){
-    let ps = playerSelection.toLowerCase();
-    let cs = computerSelection.toLowerCase();
-    
-    // If the choices are the same, the result is a tie
-    if(ps == cs){
-        return "It's a tie!";
-    }
-
-    // The following code will evaluate the different results given the two choices
-    if(ps == "rock"){
-        if(cs == "paper"){
-            return "You lose! Paper beats Rock!";
-        }else if(cs == "scissors"){
-            return "You win! Rock beats Scissors!";
-        }
-    }else if(ps == "paper"){
-        if(cs == "scissors"){
-            return "You lose! Scissors beats Paper!";
-        }else if(cs == "rock"){
-            return "You win! Paper beats Rock!";
-        }
-    }else if(ps == "scissors"){
-        if(cs == "rock"){
-            return "You lose! Rock beats Scissors!";
-        }else if(cs == "paper"){
-            return "You win! Scissors beats Paper!";
-        }
-    }
-}
-
-// This function will determine when a game will end and what to do when it does
-function handleEnd(userScore, computerScore){
-    // Display the final scores and who won the game
-    if(userScore > computerScore){
-        alert("Final score" +
-        "\nHuman: " + userScore.toString() +
-        "\nComputer: " + computerScore.toString() +
-        "\nDraws: " + draws.toString() +
-        "\nYou beat the Computer!");
-    }else if(userScore < computerScore){
-        alert("Final score\n" +
-        "\nHuman: " + userScore.toString() +
-        "\nComputer: " + computerScore.toString() +
-        "\nDraws: " + draws.toString() +
-        "\nThe Computer beat you!");
+// Colors the background of the computer's selected Pokemon
+function colorComputerSelection(selectedPokemon){
+    if(selectedPokemon == "charmander"){
+        document.getElementById("right-char").style.backgroundColor = "red";
+    }else if(selectedPokemon == "bulbasaur"){
+        document.getElementById("right-bulb").style.backgroundColor = "red";
     }else{
-        alert("Final score\n" +
-        "\nHuman: " + userScore.toString() +
-        "\nComputer: " + computerScore.toString() +
-        "\nDraws: " + draws.toString() +
-        "\nYou tied with the Computer!");
-    }
-
-    // Ask the user if they would like to play the game again
-    playAgain = prompt("Play again?").toLowerCase();
-
-    if(playAgain == "yes"){ // If the user responds yes, reset the game state
-        reset();
-    }else{ // If the user responds no, do not play any more games
-        running = false;
+        document.getElementById("right-squi").style.backgroundColor = "red";
     }
 }
 
-// Resets the game state so that another game can be played
-function reset(){
-    gamesPlayed = 0;
-    result = null;
-    userScore = 0;
-    computerScore = 0;
-    draws = 0;
+// Replaces the text in the middle text box after a winner is found
+function displayMessage(winner){
+    if(winner == "Draw"){
+        document.getElementById("round-text-label").textContent = "It's a draw!";
+    }else{
+        document.getElementById("round-text-label").textContent = winner + " wins!";
+    }
+}
+
+// Updates the score count in the middle field
+function updateScore(winner){
+    let currentScore;
+    let newScore;
+
+    if(winner == "Player"){
+        currentScore = parseInt(document.getElementById("user-score-label").textContent, 10);
+        alert(currentScore);
+        newScore = currentScore+= 1;
+        document.getElementById("user-score-label").textContent = "Score: " + newScore.toString();
+    }else if(winner == "Computer"){
+        currentScore = parseInt(document.getElementById("computer-score-label").textContent, 10);
+        newScore = currentScore+= 1;
+        document.getElementById("computer-score-label").textContent = "Score: " + newScore.toString();
+    }
 }

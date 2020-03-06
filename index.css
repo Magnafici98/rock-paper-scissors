@@ -1,3 +1,4 @@
+/* Sets background image */
 body{
     background-image: url("/assets/background.png");
     background-size: cover;
@@ -5,13 +6,13 @@ body{
     background-attachment: fixed;
     background-size: 100% 100%;
 }
-p{
-    font-size: 25px;
-    color: black;
-}
+
+/* Sets alignment for the logo at the top of the screen */
 .pokemon-logo{
     text-align: center;
 }
+
+/* Creates and aligns items in the footer */
 .footer{
     position: fixed;
     left: 0;
@@ -25,18 +26,26 @@ p{
     align-items: center;
     justify-content: center;
 }
+
+/* Styling for my copyright text */
 .name-copyright{
     font-size: medium;
     padding-right: 10vw;
 }
+
+/* Adds padding to the github logo/link in the footer */
 .my-github{
     padding: 20vw;
 }
+
+/* Styling for pokemon, nintendo, and gamefreak copyright information */
 .nintendo-copyright{
     font-size: small;
     width: 250px;
     padding-left: 10vw;
 }
+
+/* Formatting and alignment for selection item div container */
 .pokemon-choices{
     align-items: center;
     display: flex;
@@ -44,6 +53,8 @@ p{
     justify-content: center;
     height: 250px;
 }
+
+/* Formatting and styling for individual selection items */
 .pokemon-choices *{
     background-color: lightslategrey;
     border-radius: 50px;
@@ -51,32 +62,44 @@ p{
     border-style: solid;
     border-color: dodgerblue;
 }
+
+/* Adding hover effects to the selection items */
 .pokemon-choices *:hover{
     cursor: pointer;
     background-color: steelblue;
     box-shadow: 0 0 5em steelblue;
 }
+
+/* Setting display preference for the pick-window div container */
 .pick-window{
     display: flex;
 }
+
+/* Formatting and alignment for the left-side text */
 .your-pick{
     padding: 10px;
     position: absolute;
     top: 30vh;
     left: 10vw;
 }
+
+/* Formatting and alignment for the right-side text */
 .their-pick{
     padding: 10px;
     position: absolute;
     top: 30vh;
     right: 10vw;
 }
+
+/* Font styling for the left- and right-side text */
 .pick-header{
     color: whitesmoke;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 48px;
     -webkit-text-stroke: 2px black;
 }
+
+/* Formatting and alignment information for the left-side small icon container */
 .small-icons-left{
     display: flex;
     flex-wrap: wrap;
@@ -84,11 +107,15 @@ p{
     top: 42vh;
     left: 17vh;
 }
+
+/* Formatting and alignment information for the individual left-side icons */
 .small-icons-left *{
     margin: 8px;
     background-color: white;
     border-radius: 30px;
 }
+
+/* Formatting and alignment information for the right-side small icon container */
 .small-icons-right{
     display: flex;
     flex-wrap: wrap;
@@ -96,8 +123,45 @@ p{
     top: 42vh;
     right: 9vw;
 }
+
+/* Formatting and alignment information for the individual right-side icons */
 .small-icons-right *{
     margin: 8px;
     background-color: white;
     border-radius: 30px;
+}
+
+/* Formatting and alignment for the round text in the middle of the screen */
+.round-text{
+    justify-content: center;
+    text-align: center;
+    word-wrap: normal;
+    height: 100px;
+    width: 25%;
+    background-color: powderblue;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 25px;
+    border-style: ridge;
+    border-color: lightblue;
+}
+
+/* Font styling for the round text in the middle of the screen */
+.round-text *{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 28px;
+}
+
+/* Alignment for the user score */
+#user-score-label{
+    position: absolute;
+    left: 15%;
+    top: 40%;
+}
+
+/* Alignment for the computer score */
+#computer-score-label{
+    position: absolute;
+    right: 15%;
+    top: 40%;
 }
